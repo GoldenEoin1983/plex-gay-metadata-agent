@@ -1,4 +1,4 @@
-# SeanCody.bundle
+# MenAtPlay.bundle
 
 ## Description
 
@@ -6,14 +6,13 @@ Plex metadata agent for fetching metadata for Men At Play scenes.
 
 Only limited metadata is available on their free access website and no posters.
 
-By default, this matcher expects files to be named like:
+By default, this matcher expects files to be named either:
 
-* `MAP{title}
-* `MenAtPlay - {title}`, or
+* `MAP - {title}`
+* `MenAtPlay - {title}`
 * `Men At Play - {title}`
 
-Spaces around the dashes are optional, as is the sc before the number. This is
-configurable in the agent settings.
+Spaces around the dashes are optional, as is the MAP before the title. This is configurable in the agent settings.
 
 By default, this matcher only runs on items in a directory named "Men At Play".
 This is configurable in the agent settings.
