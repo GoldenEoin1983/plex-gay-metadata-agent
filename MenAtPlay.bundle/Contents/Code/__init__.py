@@ -113,11 +113,11 @@ class MenAtPlay(Agent.Movies):
                 self.Log("SEARCH - Title not found: %s" % movie_url)
                 return
 
-    def fetch_movie_name(self, html, metadata)
-        movie_name = html.xpath('//*[@id="content"]/article/div[2]/div[1]/div[1]/h1'
-                                'text()')
+        movie_name = html.xpath('//*[@id="player-wrapper"]/div/h1/text()')[0]
         self.Log('SEARCH - title: %s', movie_name)
-        metadata.title = movie_name
+        results.Append(MetadataSearchResult(id=movie_url, name=movie_name,
+                                            score=100, lang=lang))
+        return
 
     def fetch_summary(self, html, metadata):
         raw_about_text = html.xpath('//*[@id="content"]/article/div[2]/div[1]/div[1]/div[2]/div[1]/p/text()')
