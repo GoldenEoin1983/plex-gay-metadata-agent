@@ -1,10 +1,11 @@
-# SeanCody
+# MenAtPlay
 import re
 import os
 import platform
 import simplejson as json
 
-PLUGIN_LOG_TITLE = 'Men At Play'    # Log Title
+# Log Title
+PLUGIN_LOG_TITLE = 'Men At Play'
 
 VERSION_NO = '2017.11.10.0'
 
@@ -15,20 +16,17 @@ REQUEST_DELAY = 0
 # URLS
 BASE_URL = 'http://www.menatplay.com/%s'
 
-# Example Tour URL
-# http://www.menatplay.com/movie/the-barber
+# Example Movie URL http://www.menatplay.com/movie/the-barber
 BASE_MOVIE_URL = 'http://www.menatplay.com/movie/'
 
 # File names to match for this agent
 movie_pattern = re.compile(Prefs['regex'])
-
 
 def Start():
     HTTP.CacheTime = CACHE_1WEEK
     HTTP.Headers['User-agent'] = 'Mozilla/4.0 (compatible; MSIE 8.0; ' \
         'Windows NT 6.2; Trident/4.0; SLCC2; .NET CLR 2.0.50727; ' \
         '.NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0)'
-
 
 class MenAtPlay(Agent.Movies):
     name = 'Men At Play'
@@ -72,7 +70,7 @@ class MenAtPlay(Agent.Movies):
                 self.Log('SEARCH - Skipping %s because the folder %s is not '
                          'in the acceptable folders list: %s', filename,
                          final_dir, ','.join(folder_list))
-                return
+            return
 
         m = movie_pattern.search(file_title)
         if not m:
