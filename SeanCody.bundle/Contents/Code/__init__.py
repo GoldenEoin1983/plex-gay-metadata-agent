@@ -161,6 +161,11 @@ class SeanCody(Agent.Movies):
 
         # convert the gallery source variable to parseable JSON and then
         # grab the useful bits out of it
+        gallery_info = json.loads(html.xpath('/html/body/div[1]/div/div/section[2]/div/'
+                                  'script/text()')[0].
+                       replace('\n', '').
+                       replace('var gallerySource = ', '').
+                       replace('};', '}'))
         valid_image_names = []
 
         try:
@@ -216,7 +221,7 @@ class SeanCody(Agent.Movies):
 
         # Set title to movie_name
         metadata.title = movie_name
-        
+
         # Try to get description text
         try:
             self.fetch_summary(html, metadata)
@@ -246,6 +251,6 @@ class SeanCody(Agent.Movies):
 
         # Set Content Rating to X
         metadata.content_rating = 'X'
-        
+
         # Set Studio to Sean Cody
         metadata.studio = 'Sean Cody'
