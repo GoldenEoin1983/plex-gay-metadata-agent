@@ -13,7 +13,7 @@ VERSION_NO = '2017.07.26.0'
 REQUEST_DELAY = 0
 
 # URLS
-BASE_URL = 'https://www.seancody.com%s'
+BASE_URL = 'https://www.seancody.com/%s'
 
 # Example Tour URL
 # http://www.seancody.com/tour/movie/9291/brodie-cole-bareback/trailer/
@@ -46,8 +46,7 @@ class SeanCody(Agent.Movies):
         filename = media.items[0].parts[0].file
         self.Log('-----------------------------------------------------------')
         self.Log('SEARCH CALLED v.%s', VERSION_NO)
-        self.Log('SEARCH - Platform: %s %s', platform.system(),
-                 platform.release())
+        self.Log('SEARCH - Platform: %s %s', platform.system(), platform.release())
         self.Log('SEARCH - media.title - %s', media.title)
         self.Log('SEARCH - filename - %s', filename)
         self.Log('SEARCH - title - %s', title)
@@ -85,8 +84,7 @@ class SeanCody(Agent.Movies):
         sanitized_name = re.sub('[^a-z0-9]+', ' ', file_title)
 
         # Get the slug and title from the sanitized name
-        m = re.search(r"(sc)?(?P<slug>[0-9]+)\s*(?P<title>.+)$",
-                      sanitized_name)
+        m = re.search(r"(sc)?(?P<slug>[0-9]+)\s*(?P<title>.+)$", sanitized_name)
         if not m:
             self.Log('Unable to get slug and title from name!')
             return
